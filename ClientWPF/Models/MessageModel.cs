@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace ClientWPF.Models
 {
-    internal class MessageModel
+    public class MessageModel
     {
+        private string _message;
+
+        public string Message 
+        { 
+            get { return _message; } 
+            set 
+            { 
+                _message = value; 
+            } 
+        }
+
     }
 }
