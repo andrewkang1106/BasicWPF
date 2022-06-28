@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClientWPF.Models;
+using ClientWPF.ViewModels;
 
 namespace ClientWPF.Views
 {
@@ -22,7 +24,15 @@ namespace ClientWPF.Views
     {
         public MainWindow()
         {
+            this.DataContext = new MessageViewModel();
             InitializeComponent();
+        }
+
+        private void Input_Btn_Click(object sender, RoutedEventArgs e)
+        {
+          /*  //Make a new data source object
+            var messageDetails = new MessageModel();
+            messageDetails.Message = inputName.Text;*/
         }
     }
 }
