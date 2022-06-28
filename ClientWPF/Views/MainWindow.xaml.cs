@@ -25,16 +25,14 @@ namespace ClientWPF.Views
         public MainWindow()
         {
             this.DataContext = new MessageViewModel();
-          /*  var messageDetails = new MessageModel();
-            inputName.Text = messageDetails.Message;*/
             InitializeComponent();
         }
 
         private void Input_Btn_Click(object sender, RoutedEventArgs e)
         {
-            //Make a new data source object
+          /*  //Make a new data source object
             var messageDetails = new MessageModel();
-            messageDetails.Message = inputName.Text;
+            messageDetails.Message = inputName.Text;*/
         }
     }
 }
