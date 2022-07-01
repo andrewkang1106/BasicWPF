@@ -26,13 +26,14 @@ namespace ClientWPF.Views
         {
             this.DataContext = new MessageViewModel();
             InitializeComponent();
+            inputName.Text = "What is your name?";
         }
 
         private void Input_Btn_Click(object sender, RoutedEventArgs e)
         {
-          /*  //Make a new data source object
+            //Make a new data source object
             var messageDetails = new MessageModel();
-            messageDetails.Message = inputName.Text;*/
+            messageDetails.Message = inputName.Text;
         }
     }
 }

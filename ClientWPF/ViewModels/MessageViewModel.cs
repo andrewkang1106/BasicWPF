@@ -8,6 +8,6 @@ namespace ClientWPF.ViewModels
 {
     public class MessageViewModel
     {
-        public string Message { get; set; } = "What is your name?";
+        public string Message { get; set; }
     }
 }
