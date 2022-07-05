@@ -12,9 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ServerWPF.Models;
+using ServerWPF.ViewModels;
 
 namespace ServerWPF.Views
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -22,7 +25,16 @@ namespace ServerWPF.Views
     {
         public MainWindow()
         {
+            this.DataContext = new MessageViewModel();
             InitializeComponent();
+            inputName.Text = "What is your name?";
+        }
+
+        private void Input_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            //Make a new data source object
+            var messageDetails = new MessageModel();
+            messageDetails.Message = inputName.Text;
         }
     }
 }
