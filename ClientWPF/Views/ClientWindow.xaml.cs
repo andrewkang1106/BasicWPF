@@ -20,9 +20,9 @@ namespace ClientWPF.Views
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ClientWindow : Window
     {
-        public MainWindow()
+        public ClientWindow()
         {
             this.DataContext = new MessageViewModel();
             InitializeComponent();
