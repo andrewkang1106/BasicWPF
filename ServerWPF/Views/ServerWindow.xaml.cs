@@ -43,17 +43,16 @@ namespace ServerWPF.Views
            // messageDetails.Message = inputName.Text;
 
             byte[] message = Encoding.UTF8.GetBytes(inputName.Text); //byte [] <- message
-            memoryMappedFileView.Write(0, 1000); //position and size
+            memoryMappedFileView.Write(0, message.Length); //position and size. If set to val > message.Length, the "new" message will show parts of the older msg if the new shorter than older msg
             memoryMappedFileView.WriteArray<byte>(4,message, 0,message.Length); //starting pos 4, reads in message, offset 0, count = length
             memoryMappedFileView.Flush(); //clears all buffers
         }
 
         private void Read_Btn_Click(object sender, RoutedEventArgs e)
         {
-            byte[] message = new byte[memoryMappedFileView.ReadInt32(0)];
+            byte[] message = new byte[memoryMappedFileView.ReadInt32(0)]; //create byte[] size of MMF by reading MMF from pos 0
             memoryMappedFileView.ReadArray<byte>(4,message,0, message.Length);
             string tempMsg = Encoding.UTF8.GetString(message, 0, message.Length);
-
             readMsg.Text = tempMsg;
 
         }
