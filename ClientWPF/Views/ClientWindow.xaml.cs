@@ -44,6 +44,19 @@ namespace ClientWPF.Views
 
         private void Read_Btn_Click(object sender, RoutedEventArgs e)
         {
+
+
+            using (MemoryMappedFile memoryMappedFileMediator = MemoryMappedFile.OpenExisting("MediatorMemoryMappedFile"))
+            {
+                using (MemoryMappedViewAccessor memoryMappedFileView = memoryMappedFileMediator.CreateViewAccessor())
+                {
+                    byte[] message = new byte[memoryMappedFileView.ReadInt32(0)];
+                    memoryMappedFileView.ReadArray<byte>(4, message, 0, message.Length);
+                    string tempMsg = Encoding.UTF8.GetString(message, 0, message.Length);
+
+                    readMsg.Text = tempMsg;
+                }
+            }
             //byte[] message = new byte[memoryMappedFileView.ReadInt32(0)]; //create byte[] size of MMF by reading MMF from pos 0
             //memoryMappedFileView.ReadArray<byte>(4, message, 0, message.Length);
             //string tempMsg = Encoding.UTF8.GetString(message, 0, message.Length);
