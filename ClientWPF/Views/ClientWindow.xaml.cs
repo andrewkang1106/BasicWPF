@@ -30,17 +30,15 @@ namespace ClientWPF.Views
         {
             this.DataContext = new MessageViewModel();
             InitializeComponent();
-            inputName.Text = "What is your name?";
+            //inputName.Text = "What is your name?";
         }
 
-        private void Input_Btn_Click(object sender, RoutedEventArgs e)
+/*        private void Input_Btn_Click(object sender, RoutedEventArgs e)
         {
             //Make a new data source object
             var messageDetails = new MessageModel();
-            messageDetails.Message = inputName.Text;
-            
-            //memoryMappedFileMediator.OpenExisting(@"Gloabl\MediatorMemoryMappedFile");
-        }
+            messageDetails.Message = inputMsg.Text;
+        }*/
 
         private void Read_Btn_Click(object sender, RoutedEventArgs e)
         {

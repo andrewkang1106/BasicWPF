@@ -30,7 +30,7 @@ namespace ServerWPF.Views
         {
             this.DataContext = new MessageViewModel();
             InitializeComponent();
-            inputName.Text = "What is your name?";
+            inputMsg.Text = "Enter Message Here";
 
             memoryMappedFileMediator = MemoryMappedFile.CreateNew("MediatorMemoryMappedFile", 1000, MemoryMappedFileAccess.ReadWrite); //Create MMF of name "string" size 1000 bytes, file access capabilites read/write
             memoryMappedFileView = memoryMappedFileMediator.CreateViewAccessor(); // use common memorymappedfile obj and create an accessor
@@ -42,7 +42,7 @@ namespace ServerWPF.Views
            // var messageDetails = new MessageModel();
            // messageDetails.Message = inputName.Text;
 
-            byte[] message = Encoding.UTF8.GetBytes(inputName.Text); //byte [] <- message
+            byte[] message = Encoding.UTF8.GetBytes(inputMsg.Text); //byte [] <- message
             memoryMappedFileView.Write(0, message.Length); //position and size. If set to val > message.Length, the "new" message will show parts of the older msg if the new shorter than older msg
             memoryMappedFileView.WriteArray<byte>(4,message, 0,message.Length); //starting pos 4, reads in message, offset 0, count = length
             memoryMappedFileView.Flush(); //clears all buffers
@@ -54,7 +54,6 @@ namespace ServerWPF.Views
             memoryMappedFileView.ReadArray<byte>(4,message,0, message.Length);
             string tempMsg = Encoding.UTF8.GetString(message, 0, message.Length);
             readMsg.Text = tempMsg;
-
         }
     }
 }
