@@ -19,11 +19,17 @@
 
 <!--See Content of Current Message-->
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Text="Current message:" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=Message}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" Width="250"/>
-<!--Enter New Content for Message-->
+        
+        
+         <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=Message}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" Width="250"/>  
+       <!-- <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" x:Name="readMsg" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" Width="250"/> -->
+
+        
+        <!--Enter New Content for Message-->
         <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Text="Enter Your Name:" HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold" FontSize="20" />
         <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" x:Name="inputName" Text="{Binding Path=Message}" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" Width="250"/>
 <!--Submit to update-->
         <Button Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" x:Name="Input_Btn" Content="Submit" Width="50" Height="30" Click="Input_Btn_Click" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="8" />
+        <Button Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" x:Name="Read_Btn" Content="Read" Width="50" Height="20" Click="Read_Btn_Click" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="10"/>
     </Grid>
 </Window>
