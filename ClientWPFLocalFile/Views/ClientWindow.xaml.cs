@@ -12,11 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ClientWPF.Models;
-using ClientWPF.ViewModels;
+using ClientWPFLocalFile.Models;
+using ClientWPFLocalFile.ViewModels;
 using System.IO.MemoryMappedFiles;
 
-namespace ClientWPF.Views
+namespace ClientWPFLocalFile.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
