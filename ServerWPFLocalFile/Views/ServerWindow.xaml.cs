@@ -12,11 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ServerWPF.Models;
-using ServerWPF.ViewModels;
+using ServerWPFLocalFile.Models;
+using ServerWPFLocalFile.ViewModels;
 using System.IO.MemoryMappedFiles;
 
-namespace ServerWPF.Views
+namespace ServerWPFLocalFile.Views
 {
 
     /// <summary>
