@@ -9,12 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerWPF", "ServerWPF\Serv
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8FDE0EAD-2FB7-48FC-8206-F5F2CBEBB5AD}"
 	ProjectSection(SolutionItems) = preProject
+		MsgFile.txt = MsgFile.txt
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerWPFLocalFile", "ServerWPFLocalFile\ServerWPFLocalFile.csproj", "{CEB14893-E0CD-4CA1-ABF2-97726EF0965D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerWPFLocalFile", "ServerWPFLocalFile\ServerWPFLocalFile.csproj", "{CEB14893-E0CD-4CA1-ABF2-97726EF0965D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientWPFLocalFile", "ClientWPFLocalFile\ClientWPFLocalFile.csproj", "{4658B4C1-51F8-4E1A-BFA6-F804DB6A694C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientWPFLocalFile", "ClientWPFLocalFile\ClientWPFLocalFile.csproj", "{4658B4C1-51F8-4E1A-BFA6-F804DB6A694C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

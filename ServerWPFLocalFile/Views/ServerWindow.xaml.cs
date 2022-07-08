@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ServerWPFLocalFile.Models;
 using ServerWPFLocalFile.ViewModels;
-using System.IO.MemoryMappedFiles;
+using System.IO;
 
 namespace ServerWPFLocalFile.Views
 {
@@ -24,36 +24,34 @@ namespace ServerWPFLocalFile.Views
     /// </summary>
     public partial class ServerWindow : Window
     {
-        MemoryMappedFile memoryMappedFileMediator;
-        MemoryMappedViewAccessor memoryMappedFileView;
         public ServerWindow()
         {
             this.DataContext = new MessageViewModel();
             InitializeComponent();
             inputMsg.Text = "Enter Message Here";
-
-            memoryMappedFileMediator = MemoryMappedFile.CreateNew("MediatorMemoryMappedFile", 1000, MemoryMappedFileAccess.ReadWrite); //Create MMF of name "string" size 1000 bytes, file access capabilites read/write
-            memoryMappedFileView = memoryMappedFileMediator.CreateViewAccessor(); // use common memorymappedfile obj and create an accessor
         }
 
         private void Input_Btn_Click(object sender, RoutedEventArgs e)
         {
             //Make a new data source object
-           // var messageDetails = new MessageModel();
-           // messageDetails.Message = inputName.Text;
-
-            byte[] message = Encoding.UTF8.GetBytes(inputMsg.Text); //byte [] <- message
-            memoryMappedFileView.Write(0, message.Length); //position and size. If set to val > message.Length, the "new" message will show parts of the older msg if the new shorter than older msg
-            memoryMappedFileView.WriteArray<byte>(4,message, 0,message.Length); //starting pos 4, reads in message, offset 0, count = length
-            memoryMappedFileView.Flush(); //clears all buffers
+            var messageDetails = new MessageModel();
+            messageDetails.Message = inputMsg.Text;
         }
 
         private void Read_Btn_Click(object sender, RoutedEventArgs e)
         {
-            byte[] message = new byte[memoryMappedFileView.ReadInt32(0)]; //create byte[] size of MMF by reading MMF from pos 0
-            memoryMappedFileView.ReadArray<byte>(4,message,0, message.Length);
-            string tempMsg = Encoding.UTF8.GetString(message, 0, message.Length);
-            readMsg.Text = tempMsg;
+            string filename = @"c:\Users\Owner\Documents\Github\BasicWPF\MsgFile.txt";
+
+            FileStream fWrite = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None);
+            var messageDetails = new MessageModel();
+            messageDetails.Message = inputMsg.Text;
+
+            var text = messageDetails.Message;
+
+            byte[] writeArr = Encoding.UTF8.GetBytes(text);
+            fWrite.Write(writeArr, 0, text.Length);
+            fWrite.Close();
+            //as of now, only updates txt file when I close the GUI
         }
     }
 }

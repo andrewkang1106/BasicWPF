@@ -19,8 +19,8 @@
 
         <!--See Content of Current Message-->
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Text="Current Message:" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-        <!--<TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" x:Name="readMsg" <Text="{Binding Path=Message}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" Width="250"/> -->
-        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" x:Name="readMsg" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" Width="250"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" x:Name="readMsg" Text="{Binding Path=Message}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" Width="250"/> 
+       <!-- <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" x:Name="readMsg" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" Width="250"/> -->
 
         <!--Enter New Content for Message-->
         <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Text="Enter Your Message:" HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold" FontSize="20" />

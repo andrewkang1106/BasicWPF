@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClientWPFLocalFile.Models;
 using ClientWPFLocalFile.ViewModels;
-using System.IO.MemoryMappedFiles;
+using System.IO;
 
 namespace ClientWPFLocalFile.Views
 {
@@ -23,42 +23,31 @@ namespace ClientWPFLocalFile.Views
     /// </summary>
     public partial class ClientWindow : Window
     {
-
-        MemoryMappedFile memoryMappedFileMediator;
-        MemoryMappedViewAccessor memoryMappedFileView;
         public ClientWindow()
         {
             this.DataContext = new MessageViewModel();
             InitializeComponent();
-            //inputName.Text = "What is your name?";
+            string filename = @"c:\Users\Owner\Documents\Github\BasicWPF\MsgFile.txt";
+            FileStream fRead = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read);
+            var content = new string(' ', (int)fRead.Length);
+            readMsg.Text = content;
         }
-
-/*        private void Input_Btn_Click(object sender, RoutedEventArgs e)
-        {
-            //Make a new data source object
-            var messageDetails = new MessageModel();
-            messageDetails.Message = inputMsg.Text;
-        }*/
 
         private void Read_Btn_Click(object sender, RoutedEventArgs e)
         {
-
-
-            using (MemoryMappedFile memoryMappedFileMediator = MemoryMappedFile.OpenExisting("MediatorMemoryMappedFile"))
+            //create fs obj
+            string filename = @"c:\Users\Owner\Documents\Github\BasicWPF\MsgFile.txt";
+            FileStream fRead = new FileStream(filename, FileMode.Open,FileAccess.Read, FileShare.Read);
+            byte[] readArr = new byte[readMsg.Text.Length];
+            int count;
+            //string result = Encoding.UTF8.GetString(readArr);
+            //read until end of file 
+            while((count = fRead.Read(readArr, 0, readArr.Length)) > 0)
             {
-                using (MemoryMappedViewAccessor memoryMappedFileView = memoryMappedFileMediator.CreateViewAccessor())
-                {
-                    byte[] message = new byte[memoryMappedFileView.ReadInt32(0)];
-                    memoryMappedFileView.ReadArray<byte>(4, message, 0, message.Length);
-                    string tempMsg = Encoding.UTF8.GetString(message, 0, message.Length);
-
-                    readMsg.Text = tempMsg;
-                }
+                Console.WriteLine(Encoding.UTF8.GetString(readArr, 0, count));
             }
-            //byte[] message = new byte[memoryMappedFileView.ReadInt32(0)]; //create byte[] size of MMF by reading MMF from pos 0
-            //memoryMappedFileView.ReadArray<byte>(4, message, 0, message.Length);
-            //string tempMsg = Encoding.UTF8.GetString(message, 0, message.Length);
-            //readMsg.Text = tempMsg;
+            readMsg.Text = Encoding.Default.GetString(readArr);
+            fRead.Close();
         }
     }
 }
